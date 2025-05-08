@@ -1,62 +1,77 @@
+import React from 'react';
 import { motion } from 'framer-motion';
+import CardLayers3d from './card';
+import { guestTalks, mentorship, portfolioBuilding, workshops } from '../assets/assets';
 
 const WhyJoin = () => {
-  const benefits = [
+  const features = [
     {
-      title: 'Mentorship',
-      description: 'Get guidance from experienced professionals and senior members',
-      icon: '👥'
+      title: "MentorShips",
+      description: "Get personalized guidance from experienced professionals to help you grow, learn, and navigate your journey with clarity and confidence.",
+      image: mentorship,
     },
     {
-      title: 'Portfolio Building',
-      description: 'Create impressive projects to showcase your skills',
-      icon: '🎨'
+      title: "Guest Talk",
+      description: "Gain insights and inspiration from industry leaders and domain experts through powerful talks and real-world experiences.",
+      image: guestTalks,
     },
     {
-      title: 'Workshops',
-      description: 'Regular hands-on sessions to learn new technologies and techniques',
-      icon: '💻'
+      title: "Portfolio Building",
+      description: "Learn how to craft a standout portfolio that showcases your skills, projects, and creativity to impress recruiters and clients.",
+      image: portfolioBuilding,
     },
     {
-      title: 'Guest Talks',
-      description: 'Insights from industry experts and professionals',
-      icon: '🎤'
+      title: "Workshops",
+      description: "Participate in hands-on sessions to master new tools, technologies, and skills through practical, project-based learning.",
+      image: workshops,
     }
   ];
 
   return (
-    <section id="why-join" className="py-20 bg-primary">
+    <motion.section 
+      id='why-join' 
+      className="py-16 h-screen"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
       <div className="container mx-auto px-4">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+        <motion.h2 
+          className="text-4xl font-bold text-center mb-12 text-white"
+          initial={{ y: -50 }}
+          whileInView={{ y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center text-white mb-12"
+          transition={{ duration: 0.5, type: "spring" }}
         >
           Why Join GraphiX3D?
         </motion.h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {benefits.map((benefit, index) => (
+        
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {features.map((feature, index) => (
             <motion.div
-              key={benefit.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              key={index}
+              initial={{ x: index % 2 === 0 ? -100 : 100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.2 }}
-              className="bg-primary/50 backdrop-blur-sm p-6 rounded-lg border border-accent/20 hover:border-accent/40 transition-colors"
+              transition={{ delay: index * 0.2, duration: 0.5 }}
             >
-              <div className="text-4xl mb-4">{benefit.icon}</div>
-              <h3 className="text-xl font-semibold text-white mb-2">
-                {benefit.title}
-              </h3>
-              <p className="text-gray-300">{benefit.description}</p>
+              <CardLayers3d image={feature.image}>
+                <div className="h-full p-4">
+                  <h3 className="text-xl font-semibold text-center mb-2 text-white">
+                    {feature.title}
+                  </h3>
+                  <p className="text-gray-200 text-sm text-center leading-snug">
+                    {feature.description}
+                  </p>
+                </div>
+              </CardLayers3d>
             </motion.div>
           ))}
         </div>
       </div>
-    </section>
-  );
+    </motion.section>
+  )
 };
 
 export default WhyJoin;

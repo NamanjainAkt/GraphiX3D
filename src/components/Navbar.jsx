@@ -6,31 +6,37 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Why Join', path: '/#why-join' },
-    { name: 'Events', path: '/events' },
-    { name: 'About', path: '/#about' },
-    { name: 'Contact', path: '/#contact' }
+    { name: 'Why Join ?', path: '#why-join' },
+    { name: 'Wings', path: '#wings' },
+    { name: 'Events', path: '#events' },
+    { name: 'About', path: '#about' },
+    { name: 'Contact', path: '#contact' }
   ];
 
   return (
     <nav className="fixed w-full z-50 bg-primary/90 backdrop-blur-sm">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Link to="/" className="flex items-center">
-            <span className="text-2xl font-bold text-accent">GraphiX3D</span>
+          <Link to="/"  className="flex items-center">
+            <span onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-2xl font-bold bg-gradient-to-r from-[#27e0b3] to-purple-600 bg-clip-text text-transparent">GraphiX3D</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex space-x-8">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.name}
-                to={link.path}
-                className="text-gray-300 hover:text-accent transition-colors"
+                href={link.path}
+                className="text-white hover:text-secondary transition-colors"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector(link.path)?.scrollIntoView({
+                    behavior: 'smooth'
+                  });
+                }}
               >
                 {link.name}
-              </Link>
+              </a>
             ))}
           </div>
 
@@ -66,14 +72,20 @@ const Navbar = () => {
             className="md:hidden py-4"
           >
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.name}
-                to={link.path}
+                href={link.path}
                 className="block py-2 text-gray-300 hover:text-accent transition-colors"
-                onClick={() => setIsOpen(false)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setIsOpen(false);
+                  document.querySelector(link.path)?.scrollIntoView({
+                    behavior: 'smooth'
+                  });
+                }}
               >
                 {link.name}
-              </Link>
+              </a>
             ))}
           </motion.div>
         )}

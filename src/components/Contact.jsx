@@ -9,13 +9,20 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-primary/95">
-      <div className="container mx-auto px-4">
+    <motion.section 
+      id="contact" 
+      className="py-20 bg-primary/95 h-screen mt-20"
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+    >
+      <div className="container mx-auto px-8 py-10 mt-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl font-bold text-center text-white mb-12"
+          className="text-4xl font-bold text-center text-white mb-14"
         >
           Get in Touch
         </motion.h2>
@@ -30,7 +37,7 @@ const Contact = () => {
             <div>
               <h3 className="text-2xl font-semibold text-white mb-4">Contact Us</h3>
               <p className="text-gray-300">
-                Have questions about joining GraphiX3D or want to collaborate? We'd love
+                Have questions about joining GraphiX3D or want to collaborate?<br /> We'd love
                 to hear from you!
               </p>
             </div>
@@ -66,7 +73,13 @@ const Contact = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <form className="space-y-6">
+            <motion.form 
+              className="space-y-6"
+              initial={{ scale: 0.8, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               <div>
                 <label htmlFor="name" className="block text-white mb-2">
                   Name
@@ -103,17 +116,19 @@ const Contact = () => {
                 ></textarea>
               </div>
 
-              <button
+              <motion.button
                 type="submit"
                 className="w-full bg-accent hover:bg-accent/80 text-primary font-bold py-3 px-8 rounded-lg transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 Send Message
-              </button>
-            </form>
+              </motion.button>
+            </motion.form>
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

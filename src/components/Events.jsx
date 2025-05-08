@@ -1,35 +1,37 @@
 import { motion } from 'framer-motion';
+import { defaultDonut } from '../assets/assets';
+import Button from './button';
 
 const Events = () => {
   const events = [
     {
-      title: '3D Modeling Workshop',
-      date: '2024-02-15',
+      title: 'Default Donut',
+      date: '04-05-2025 to 06-05-2025',
       time: '14:00',
       description: 'Learn the basics of 3D modeling using industry-standard tools',
-      image: '/events/workshop.jpg',
+      image: defaultDonut,
+      type: 'Event'
+    },
+    {
+      title: 'Advanced Animation Workshop',
+      date: '10-05-2025 to 12-05-2025',
+      time: '15:30',
+      description: 'Deep dive into advanced animation techniques and principles',
+      image: '/events/animation.jpg',
       type: 'Workshop'
     },
     {
-      title: 'Game Development Talk',
-      date: '2024-02-20',
-      time: '16:00',
-      description: 'Industry experts share insights about game development careers',
-      image: '/events/talk.jpg',
-      type: 'Guest Talk'
-    },
-    {
-      title: 'Animation Showcase',
-      date: '2024-02-25',
-      time: '15:00',
-      description: 'Members present their latest animation projects',
-      image: '/events/showcase.jpg',
-      type: 'Showcase'
+      title: 'Game Development Hackathon',
+      date: '20-05-2025 to 22-05-2025',
+      time: '09:00',
+      description: 'Create an amazing game in 48 hours with your team',
+      image: '/events/hackathon.jpg',
+      type: 'Competition'
     }
   ];
 
   return (
-    <section id="events" className="py-20 bg-primary/95">
+    <section id="events" className="h-screen py-20 bg-primary/95">
       <div className="container mx-auto px-4">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -51,6 +53,11 @@ const Events = () => {
               className="bg-primary/50 backdrop-blur-sm rounded-lg overflow-hidden border border-accent/20 hover:border-accent/40 transition-all hover:transform hover:scale-105"
             >
               <div className="h-48 bg-gray-800 relative">
+                <img 
+                  src={event.image} 
+                  alt={event.title}
+                  className="w-full h-full object-cover"
+                />
                 <div className="absolute top-4 right-4 bg-accent text-primary px-3 py-1 rounded-full text-sm font-semibold">
                   {event.type}
                 </div>
@@ -69,9 +76,7 @@ const Events = () => {
                   at {event.time}
                 </p>
                 <p className="text-gray-300 mb-6">{event.description}</p>
-                <button className="bg-accent/20 hover:bg-accent/30 text-accent font-semibold py-2 px-4 rounded-full transition-colors w-full">
-                  Learn More
-                </button>
+                <Button/>
               </div>
             </motion.div>
           ))}

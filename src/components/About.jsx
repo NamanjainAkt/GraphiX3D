@@ -3,29 +3,29 @@ import { motion } from 'framer-motion';
 const About = () => {
   const teamMembers = [
     {
-      name: 'Alex Chen',
+      name: 'Naman',
       role: 'Club President',
       image: '/team/president.jpg'
     },
     {
-      name: 'Sarah Miller',
+      name: 'Naman',
       role: 'Technical Lead',
       image: '/team/tech-lead.jpg'
     },
     {
-      name: 'David Park',
+      name: 'Naman',
       role: 'Events Coordinator',
       image: '/team/events.jpg'
     },
     {
-      name: 'Emma Wilson',
+      name: 'Naman',
       role: 'Creative Director',
       image: '/team/creative.jpg'
     }
   ];
 
   return (
-    <section id="about" className="py-20 bg-primary">
+    <section id="about" className="h-screen py-20 bg-primary">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -1,15 +1,17 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, BrowserRouter } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import WhyJoin from './components/WhyJoin';
 import Events from './components/Events';
 import About from './components/About';
 import Contact from './components/Contact';
+import Wings from './components/Wings';
 
 const Home = () => (
   <>
     <Hero />
     <WhyJoin />
+    <Wings />
     <Events />
     <About />
     <Contact />
@@ -18,15 +20,12 @@ const Home = () => (
 
 const App = () => {
   return (
-    <Router>
+    <BrowserRouter>
       <div className="min-h-screen bg-primary text-white">
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/events" element={<Events />} />
-        </Routes>
+        <Home/>
       </div>
-    </Router>
+    </BrowserRouter>
   );
 };
 
