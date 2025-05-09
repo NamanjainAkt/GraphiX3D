@@ -6,6 +6,7 @@ import Events from './components/Events';
 import About from './components/About';
 import Contact from './components/Contact';
 import Wings from './components/Wings';
+import ModelGalleryPage from './components/ModelGalleryPage';
 
 const Home = () => (
   <>
@@ -23,7 +24,11 @@ const App = () => {
     <BrowserRouter>
       <div className="min-h-screen bg-primary text-white">
         <Navbar />
-        <Home/>
+        {/* <Home/> */}
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/model-gallery" element={<ModelGalleryPage />} />
+        </Routes>
       </div>
     </BrowserRouter>
   );
