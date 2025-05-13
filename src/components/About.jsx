@@ -3,21 +3,25 @@ import { motion } from 'framer-motion';
 const About = () => {
   const teamMembers = [
     {
+      id: 1,
       name: 'Naman',
       role: 'Club President',
       image: '/team/president.jpg'
     },
     {
+      id: 2,
       name: 'Naman',
       role: 'Technical Lead',
       image: '/team/tech-lead.jpg'
     },
     {
+      id: 3,
       name: 'Naman',
       role: 'Events Coordinator',
       image: '/team/events.jpg'
     },
     {
+      id: 4,
       name: 'Naman',
       role: 'Creative Director',
       image: '/team/creative.jpg'
@@ -81,7 +85,7 @@ const About = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {teamMembers.map((member, index) => (
             <motion.div
-              key={member.name}
+              key={member.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

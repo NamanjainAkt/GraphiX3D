@@ -2,20 +2,21 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, useGLTF, Environment } from '@react-three/drei';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
-import { Suspense,useCallback } from 'react';
+import { Suspense, useCallback } from 'react';
 import { TypeAnimation } from 'react-type-animation';
+import ParticleText from './ParticleText'
 
 const Logo3D = () => {
   const { scene } = useGLTF('./logo.glb');
-  
+
   // Clone the scene to avoid issues with multiple renderings
   const model = scene.clone();
-  
+
   return (
-    <primitive 
-      object={model} 
-      scale={2.5} 
-      position={[0, 0, 0]} 
+    <primitive
+      object={model}
+      scale={2.5}
+      position={[0, 0, 0]}
       rotation={[0, 0, 0]}
     />
   );
@@ -49,7 +50,7 @@ const Hero = () => {
 
   return (
     <section id='hero' className="h-screen relative bg-primary flex flex-col items-center justify-center">
-      <div className="w-full md:w-2/3 h-[400px] mb-8">
+      <div className="w-full md:w-2/3 h-[400px] -mb-8">
         <Canvas camera={{ position: [0, 0, 5], fov: 50 }}>
           <ambientLight intensity={0.7} />
           <pointLight position={[10, 10, 5]} intensity={1.5} />
@@ -61,22 +62,16 @@ const Hero = () => {
         </Canvas>
       </div>
       <div className="text-center">
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-6xl font-bold text-white mb-6"
-        >
-          Welcome to GraphiX3D
-        </motion.h1>
+        <ParticleText
+          text={"Welcome To Graphix3D"}/>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, delay: 0.1 }}
-          className="text-xl mb-8 font-mono text-white relative group"
+          className="text-xl mb-8 font-sans text-white relative group"
           style={{
             textShadow: '0 0 10px rgba(255,255,255,0.7), 0 0 20px rgba(255,255,255,0.5), 0 0 30px rgba(255,255,255,0.3)',
-            fontFamily:'monospace'
+            fontFamily: 'monospace'
           }}
         >
           <TypeAnimation

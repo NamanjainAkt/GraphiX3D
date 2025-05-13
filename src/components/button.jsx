@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-const Button = () => {
+const Button = ({ to }) => {
   return (
     <StyledWrapper>
-      <button className="button">
+      <Link to={to} className="button">
         <span>Go To Page</span>
-      </button>
+      </Link>
     </StyledWrapper>
   );
 }
@@ -54,6 +55,7 @@ const StyledWrapper = styled.div`
 
   .button:hover:after {
     opacity: 1;
-  }`;
+  }
+`;
 
 export default Button;

@@ -14,8 +14,8 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed w-full z-50 bg-primary/90 backdrop-blur-sm">
-      <div className="container mx-auto px-4">
+    <nav className="fixed w-full z-50 bg-primary/90 backdrop-blur-sm ">
+      <div className="container mx-auto px-4 border-b border-teal-600">
         <div className="flex justify-between items-center h-16">
           <Link to="/"  className="flex items-center">
             <span onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-2xl font-bold bg-gradient-to-r from-[#27e0b3] to-purple-600 bg-clip-text text-transparent">GraphiX3D</span>

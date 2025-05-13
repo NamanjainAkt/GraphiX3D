@@ -76,7 +76,7 @@ const Events = () => {
                   at {event.time}
                 </p>
                 <p className="text-gray-300 mb-6">{event.description}</p>
-                <Button/>
+                <Button to={index === 0 ? "/events/default_donut" : "#"} />
               </div>
             </motion.div>
           ))}
